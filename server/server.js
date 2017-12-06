@@ -1,18 +1,16 @@
 require('./config/config');
 
 const express = require('express');
-const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
 const port = process.env.PORT;
 
 const index = require('./routes/index');
-
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+const todos = require('./routes/todos');
 
 app.use('/', index);
+app.use('/api/todos', todos);
 
 app.listen(port, () => {
   console.log(`Started up at port ${port}`);
