@@ -9,6 +9,9 @@ const port = process.env.PORT;
 const index = require('./routes/index');
 const todos = require('./routes/todos');
 
+app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/', index);
 app.use('/api/todos', todos);
 
